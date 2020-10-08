@@ -24,6 +24,7 @@
     "css-loader": "^4.3.0",
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.3",
     "html-webpack-plugin": "^4.5.0",
     "prettier": "^2.1.2",
@@ -33,23 +34,45 @@
     "webpack-dev-server": "^3.11.0"
   },
   "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 2020,
-      "sourceType": "module"
-    },
     "extends": [
       "eslint:recommended",
       "plugin:react/recommended",
       "prettier"
     ],
-    "parser": "babel-eslint",
+    "plugins": [
+      "prettier"
+    ],
     "env": {
       "browser": true,
-      "node": true,
       "es6": true
     },
-    "ignorePatterns": [
-      "node_modules/"
-    ]
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "arrowParens": "always",
+          "trailingComma": "all"
+        }
+      ],
+      "comma-dangle": [
+        "error",
+        "always-multiline"
+      ],
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ]
+    }
   }
 }
